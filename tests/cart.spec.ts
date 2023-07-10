@@ -23,6 +23,7 @@ test.describe('cart tests', () => {
     await homePage.addToCart('Bottled - EDT - 50 ml');
 
     await homePage.page.locator('[data-testid="minicart-icon-button"]').click();
+    await (homePage.page.locator('//span[@class="_2pwv_"]')).waitFor({state:'visible',timeout:3000});
     await expect(homePage.page.locator('//span[@class="_2pwv_"]')).toBeVisible();
   });
 
@@ -35,6 +36,7 @@ test.describe('cart tests', () => {
     await expect(loginPage.page.locator('//span[@class="_2pwv_"]')).toBeVisible();
 
     await homePage.deleteFromCart();
+    await (homePage.emptyCartTxt).waitFor({state:'visible',timeout:3000});
     await expect(homePage.emptyCartTxt).toHaveText(`${process.env.EMPTY_CART}`);
   });
 });
