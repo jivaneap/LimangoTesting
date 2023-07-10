@@ -20,7 +20,7 @@ test.describe('cart tests', () => {
     await expect(loginPage.page).toHaveURL(`${process.env.HOME_PAGE_URL}`);
 
     await homePage.searchProduct('perfume');
-    await homePage.addToCart('Biotherm Eau Pure - EdT, 100 ml');
+    await homePage.addToCart('Bottled - EDT - 50 ml');
 
     await homePage.page.locator('[data-testid="minicart-icon-button"]').click();
     await expect(homePage.page.locator('//span[@class="_2pwv_"]')).toBeVisible();
